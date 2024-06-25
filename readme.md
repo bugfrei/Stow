@@ -25,7 +25,7 @@ Einfach
 
 ```
 git pull
-stow
+(dir -dir).Name | ForEach-Object { stow $_ }
 ```
 
 Updated alle Konfigs.
