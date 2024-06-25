@@ -1,3 +1,9 @@
+# UPDATE STOW REPO
+cd ~/stowdir
+git add .
+git commit -m "Aktuelle Version"
+git push
+cd ~
 # Neue Version
 #if
 #(!(Test-Path Env:TMUX)) {
