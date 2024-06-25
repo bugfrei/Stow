@@ -1,0 +1,49 @@
+# What protocol to use when performing git operations. Supported values: ssh, https
+git_protocol: https
+# What editor gh should run when creating issues, pull requests, etc. If blank, will refer to environment.
+editor:
+# When to interactively prompt. This is a global config that cannot be overridden by hostname. Supported values: enabled, disabled
+prompt: enabled
+# A pager program to send command output to, e.g. "less". Set the value to "cat" to disable the pager.
+pager:
+# Aliases allow you to create nicknames for gh commands
+aliases:
+    co: pr checkout
+    jose: repo list QuantumSyncBot
+    Andy: repo list AndyGla
+    Carsten: repo list bugfrei
+    Ca: repo list bugfrei
+    Cemre: repo list CemreDogan22
+    Ce: repo list CemreDogan22
+    JJ: repo list JJ0109
+    Andrey: repo list lugunov
+    Andr: repo list lugunov
+    Jose: repo list QuantumSyncBot
+    Jo: repo list QuantumSyncBot
+    Sebastian: repo list sebastianmantsch
+    Se: repo list sebastianmantsch
+    Wolf: repo list WolfSR
+    Wo: repo list WolfSR
+    sl: repo list TeamSLAH
+    slah: repo list TeamSLAH
+    andy: repo list AndyGla
+    carsten: repo list bugfrei
+    ca: repo list bugfrei
+    cemre: repo list CemreDogan22
+    ce: repo list CemreDogan22
+    jj: repo list JJ0109
+    andrey: repo list lugunov
+    andr: repo list lugunov
+    jo: repo list QuantumSyncBot
+    sebastian: repo list sebastianmantsch
+    se: repo list sebastianmantsch
+    wolf: repo list WolfSR
+    wo: repo list WolfSR
+    sup: repo list SupJoCa
+    joca: repo list SupJoCa
+    jc: repo list SupJoCa
+# The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
+http_unix_socket:
+# What web browser gh should use when opening URLs. If blank, will refer to environment.
+browser:
+version: "1"

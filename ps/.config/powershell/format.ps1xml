@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>System.IO.FileInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>System.IO.FileInfo</TypeName>
+        <TypeName>System.IO.DirectoryInfo</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Width>22</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>7</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>16</Width>
+          </TableColumnHeader>
+          <TableColumnHeader />
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LastWriteTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LAge</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SizeR</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NameString</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

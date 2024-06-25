@@ -1,0 +1,1 @@
+Update-TypeData -PrependPath /usr/local/microsoft/powershell/7\MyTypes.ps1xml

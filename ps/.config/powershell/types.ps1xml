@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>System.IO.DirectoryInfo</Name>
+    <Members>
+      <NoteProperty>
+        <Name>Type</Name>
+        <Value>Dir</Value>
+      </NoteProperty>
+      <ScriptProperty>
+        <Name>Age</Name>
+        <GetScriptBlock>
+          $d = ((Get-Date) - ($this.CreationTime)).Days
+          if ($d -gt 0) {
+              return "$d d"
+          }
+          $h = ((Get-Date) - ($this.CreationTime)).TotalHours
+          $t = [Math]::Round($h, 1)
+          return "$t h"
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>LAge</Name>
+        <GetScriptBlock>
+          $d = ((Get-Date) - ($this.LastWriteTime)).Days
+          if ($d -gt 0) {
+              return "$d d"
+          }
+          $h = ((Get-Date) - ($this.LastWriteTime)).TotalHours
+          $t = [Math]::Round($h, 1)
+          return "$t h"
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>System.IO.FileInfo</Name>
+    <Members>
+      <NoteProperty>
+        <Name>Type</Name>
+        <Value>File</Value>
+      </NoteProperty>
+      <ScriptProperty>
+        <Name>Age</Name>
+        <GetScriptBlock>
+          $d = ((Get-Date) - ($this.CreationTime)).Days
+          if ($d -gt 0) {
+              return "$d d"
+          }
+          $h = ((Get-Date) - ($this.CreationTime)).TotalHours
+          $t = [Math]::Round($h, 1)
+          return "$t h"
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>LAge</Name>
+        <GetScriptBlock>
+          $d = ((Get-Date) - ($this.LastWriteTime)).Days
+          if ($d -gt 0) {
+              return "$d d"
+          }
+          $h = ((Get-Date) - ($this.LastWriteTime)).TotalHours
+          $t = [Math]::Round($h, 1)
+          return "$t h"
+        </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>SizeR</Name>
+        <GetScriptBlock>
+            $size = $this.Size
+            $sizeT = "$size b"
+            if ($size -ge 1gb) {
+                $size = [Math]::Round($Size / 1gb, 2)
+                $sizeT = "$size gb"
+            }
+            elseif ($size -ge 1mb) {
+                $size = [Math]::Round($Size / 1mb, 2)
+                $sizeT = "$size mb"
+            }
+            elseif ($size -ge 1kb) {
+                $size = [Math]::Round($Size / 1kb, 2)
+                $sizeT = "$size kb"
+            }
+            $sizeT
+        </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
