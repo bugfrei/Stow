@@ -64,6 +64,7 @@ $profilesw = "/Users/carstenschlegel/.config/powershell/Microsoft.PowerShell_pro
 
 # Um dieses Profile auch im VSC nutzen zu können, muss es in der Profile-Datei von VSC reinkopiert werden
 # = als Platzhalter für Measure-Object
+New-Alias -Name pip -Value pip3
 New-Alias -Name term -Value zsh
 New-Alias -Name vim -Value nvim
 New-Alias -Name typem -Value "Show-Markdown"
