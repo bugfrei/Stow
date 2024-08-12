@@ -70,6 +70,7 @@ New-Alias -Name vim -Value nvim
 New-Alias -Name typem -Value "Show-Markdown"
 New-Alias -Name .. -Value ForEach-Object
 New-Alias mupdf mupdf-gl
+New-Alias -Name todo -Value taskell
 
 # Variablen
 $username = [System.Environment]::Username
