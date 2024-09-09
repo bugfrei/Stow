@@ -325,6 +325,12 @@ function val {
     mvim -f /Users/carstenschlegel/valhalla
     Get-Process -Name VLC | Stop-Process
 }
+function hoist {
+    ii "/Users/carstenschlegel/Music/Hoist The Colours - Bass Singers.mp4"
+    Start-Sleep -Seconds 5
+    mvim -f /Users/carstenschlegel/hoist
+    Get-Process -Name VLC | Stop-Process
+}
 
 function logs {
     param(
