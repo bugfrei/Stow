@@ -6,85 +6,6 @@
   "PromptString": "\n;",
   "urls": [
     {
-      "name": "Box-Module",
-      "alias": [
-        "box",
-        "boxmod"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/boxRentalboxmodule-0.0.1/index.html",
-      "group": "slah"
-    },
-    {
-      "name": "Device-Module",
-      "alias": [
-        "device",
-        "devicemod",
-        "devmod"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/ui5devicemodule-0.0.1/index.html",
-      "group": "slah",
-      "browser": ""
-    },
-    {
-      "name": "Diagnose-Module",
-      "alias": [
-        "diagnose",
-        "diag",
-        "diagmod",
-        "diagnosemod"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/diagnosediagnosemodule-0.0.1/index.html",
-      "group": "slah"
-    },
-    {
-      "name": "Doctor-Module",
-      "alias": [
-        "doctor",
-        "doc",
-        "docmod",
-        "doctormod"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/doctormodule-0.0.1/index.html",
-      "group": "slah"
-    },
-    {
-      "name": "Patient-Module",
-      "alias": [
-        "patient",
-        "pat",
-        "patmod",
-        "patientmod"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/patientpatientmodule-0.0.1/index.html",
-      "group": "slah"
-    },
-    {
-      "name": "Questionnaire",
-      "alias": [
-        "questionnaire",
-        "quest",
-        "frage",
-        "fragebogen",
-        "frageboegen",
-        "fragen"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/questionnaire-0.0.1/index.html",
-      "group": "slah"
-    },
-    {
-      "name": "Rentlogger-Module",
-      "alias": [
-        "rent",
-        "rentlogger",
-        "rentmod",
-        "rentloggermod",
-        "logger",
-        "loggermod"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/rentloggermodulerentloggermodule-0.0.1/index.html",
-      "group": "slah"
-    },
-    {
       "name": "Local_4004",
       "alias": [
         "4004",
@@ -157,15 +78,6 @@
       ],
       "url": "https://cockpit.eu10.hana.ondemand.com/cockpit/#/globalaccount",
       "group": "admin"
-    },
-    {
-      "name": "GIT_SLAH",
-      "alias": [
-        "slahgit",
-        "gitslah"
-      ],
-      "url": "https://github.com/TeamSLAH",
-      "group": "git"
     },
     {
       "name": "HELP_Git",
@@ -299,75 +211,6 @@
       "browser": "<default>"
     },
     {
-      "name": "SLAH_ROOT",
-      "alias": [
-        "slah",
-        "schlaflabor",
-        "sleeplab",
-        "sl"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/",
-      "group": "slah"
-    },
-    {
-      "name": "MQTT_BROKER",
-      "alias": [
-        "mqtt",
-        "broker",
-        "mqttbroker",
-        "brokermqtt"
-      ],
-      "url": "https://suportis.cedalo.cloud/login",
-      "group": "slah",
-      "browser": "<default>"
-    },
-    {
-      "name": "SLAH_MQTTTEST",
-      "alias": "mqtttest",
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/device-data/MQTT",
-      "group": "SLAH"
-    },
-    {
-      "name": "SLAH_MQTT_IS_RUNNING",
-      "alias": [
-        "isrun",
-        "+misrun"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/device-data/mqttIsRunning()",
-      "group": "slah",
-      "browser": ""
-    },
-    {
-      "name": "SLAH_MQTT_START",
-      "alias": [
-        "start",
-        "+mstart"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/device-data/mqttStart()",
-      "group": "slah",
-      "browser": ""
-    },
-    {
-      "name": "SLAH_MQTT_STOP",
-      "alias": [
-        "stop",
-        "+mstop"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/device-data/mqttStop()",
-      "group": "slah",
-      "browser": ""
-    },
-    {
-      "name": "WEEKLY_KAPA",
-      "alias": [
-        "kapa",
-        "weekly"
-      ],
-      "url": "https://suportis.sharepoint.com/:x:/s/Weekly/EaOOGjd6b8BGgwSbW7ibEeIBFQNXrxM2AlIeBfxKnPBewA?e=hSZO5V&isSPOFile=1",
-      "group": "suportis",
-      "browser": "<default>"
-    },
-    {
       "name": "UNICODE_EMOJIES",
       "alias": [
         "*unicode",
@@ -390,65 +233,11 @@
       "group": "SLAH"
     },
     {
-      "name": "SLAH_PROJECT1",
-      "alias": "project1",
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/project1-0.0.1/index.html",
-      "browser": "",
-      "group": "SLAH"
-    },
-    {
-      "name": "MQTT_STOP_LOCAL",
-      "alias": "+mlstop",
-      "url": "http://localhost:5001/device-data/mqttStop()",
-      "browser": "",
-      "group": "SLAH"
-    },
-    {
-      "name": "MQTT_START_LOCAL",
-      "alias": "+mlstart",
-      "url": "http://localhost:5001/device-data/mqttStart()",
-      "browser": "",
-      "group": "SLAH"
-    },
-    {
-      "name": "MQTT_ISRUN_LOCAL",
-      "alias": "+mlisrun",
-      "url": "http://localhost:5001/device-data/mqttIsRunning()",
-      "browser": "",
-      "group": "SLAH"
-    },
-    {
-      "name": "UI5Showcase",
-      "alias": "showcase",
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/ui5showcase-0.0.1/index.html",
-      "browser": "",
-      "group": "SLAH"
-    },
-    {
       "name": "Scanner_Brother",
       "alias": "+scanner",
       "url": "https://suportis.sharepoint.com/Freigegebene%20Dokumente/Forms/AllItems.aspx?viewpath=%2FFreigegebene%20Dokumente%2FForms%2FAllItems%2Easpx&id=%2FFreigegebene%20Dokumente%2F86%20Drucker%2DTausch&viewid=908b345f%2D3ccb%2D4d44%2Da787%2D9ab1049ca2fb",
       "browser": "<default>",
       "group": "INTERN"
-    },
-    {
-      "name": "SLAH_SLFINALCOUNT",
-      "alias": [
-        "+mcount",
-        "count"
-      ],
-      "url": "https://suportis-ag-slah-dev-dylq3w71-slah-dev-schlaflabor-approuter.cfapps.eu10-004.hana.ondemand.com/device-data/SLDataFinal/$count",
-      "browser": "",
-      "group": "SLAH"
-    },
-    {
-      "name": "a",
-      "alias": [
-        "+cj"
-      ],
-      "url": "https://github.com/SAP-samples/cap-service-integration-codejam/tree/main",
-      "browser": "<default>",
-      "group": ""
     },
     {
       "name": "HELP_Docker",
@@ -575,44 +364,6 @@
       },
       {
         "aliases": [
-          "*svg",
-          "diagramm"
-        ],
-        "groups": "SLAH",
-        "description": "Schlaflabor Diagramm Projekt (HTML/JavaScript Only)\n",
-        "path": "/Users/carstenschlegel/Coding/JS/SVG",
-        "name": "SLAH_DIAGRAMM"
-      },
-      {
-        "aliases": [
-          "*sl",
-          "+sle",
-          "_slc"
-        ],
-        "groups": "SLAH",
-        "description": "Schlaflabor Hauptprojekt\n",
-        "path": "/Users/carstenschlegel/Coding/Projekte/Hauptprojekte/Schlaflabor",
-        "name": "SCHLAFLABOR"
-      },
-      {
-        "aliases": "*fs",
-        "groups": "SLAH",
-        "description": "Firststeps/UI5 Testprojekt\n",
-        "path": "/Users/carstenschlegel/Coding/Projekte/Lernprojekte/FirstSteps",
-        "name": "FIRSTSTEPS"
-      },
-      {
-        "aliases": [
-          "*mqtt",
-          "+mqtt"
-        ],
-        "groups": "SLAH",
-        "description": "MQTT Simulator Projekt (Vorbereitung auf MQTT Implementierung im SLAH)\n",
-        "path": "/Users/carstenschlegel/Coding/Projekte/Testprojekte/MQTT_SIM",
-        "name": "MQTTSIM"
-      },
-      {
-        "aliases": [
           "root",
           "+home"
         ],
@@ -719,13 +470,6 @@
         "name": "ITEA_TUTORIALS_FILES"
       },
       {
-        "aliases": "*float",
-        "groups": null,
-        "description": "Float Projekt (Import aus ByD)\n",
-        "path": "/Users/carstenschlegel/Coding/PW/Float",
-        "name": "FLOAT"
-      },
-      {
         "aliases": "*skill",
         "groups": "SUPORTIS",
         "description": "Skillprofil (Word)\n",
@@ -827,13 +571,6 @@
         "description": "Min Profile für SLAH und Daniela\n",
         "path": "/Users/carstenschlegel/Coding/PW/MINProfile",
         "name": "MINPROFILE"
-      },
-      {
-        "aliases": "*check",
-        "groups": null,
-        "description": "Checksummenberechnung\n",
-        "path": "/Users/carstenschlegel/Coding/Projekte/Testprojekte/IoT/NumberID_Checksum",
-        "name": "IOT_CHECKSUM"
       },
       {
         "aliases": "sync",
@@ -1401,6 +1138,154 @@
         "PowerShell": "F5  : SUP neu laden/Sync. -> Parallels Desktop\n\n"
       },
       "type": "json"
+    },
+    {
+      "name": "TEXTE_SYMBOLE",
+      "type": "json",
+      "description": "Texte und Symbole",
+      "tags": [],
+      "alias": [
+        "*text",
+        "*symbole"
+      ],
+      "content": {
+        "Kombos": {
+          "GRID_SINGLE_┌┬┐": "┌ ┬ ┐ ⏐ ─ ├ ┼ ┤ └ ┴ ┘",
+          "GRID_DOUBLE_": "",
+          "Finger_👆👇👈👉": "👆👇👈👉",
+          "CheckBox_⬜⬛☐☒☑✘✔": "⬜⬛☐☒☑✘✔",
+          "Pfeile_↑↗→↘↓↙←↖": "↑↗→↘↓↙←↖",
+          "Römisch_ⅠⅡⅢⅣ": "ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ "
+        },
+        "Symbole": {
+          "Finger_👉": "👉",
+          "Maus_🖱": "🖱",
+          "Tastatur_⌨": "⌨",
+          "Globus_🌐": "🌐",
+          "Key_Command_⌘": "⌘",
+          "Key_Option_⌥": "⌥",
+          "Key_Control_⌃": "⌃",
+          "Key_Enter_↲": "↲",
+          "Key_Shift_⇧": "⇧",
+          "Key_CapsLock_⇪": "⇪",
+          "Check_✓": "✓",
+          "CheckFett_✔": "✔",
+          "CheckBox_✅": "✅",
+          "CheckBox_2_☑": "☑",
+          "KreuzBox_2_☒": "☒",
+          "KreuzFett_✘": "✘",
+          "Kreuz_✗": "✗",
+          "Box_☐": "☐",
+          "Finger_hoch_👆": "👆",
+          "Finger_runter_👇": "👇",
+          "Finger_links_👈": "👈",
+          "Finger_rechts_👉": "👉",
+          "Pfeil_hoch_↑": "↑",
+          "Pfeil_rechts_→": "→",
+          "Pfeil_runter_↓": "↓",
+          "Pfeil_links_←": "←",
+          "Warnung_⚠️": "⚠️"
+        }
+      }
+    },
+    {
+      "name": "JavaScript",
+      "type": "json",
+      "description": "JavaScript Beispiele",
+      "tags": [],
+      "alias": [
+        "*JavaScript",
+        "js"
+      ],
+      "content": {
+        "Switch": "switch(expression) {\n  case x:\n    // code block\n    break;\n  case y:\n    // code block\n    break;\n  default:\n    // code block\n}\n"
+      }
+    },
+    {
+      "name": "Hilfe",
+      "type": "json",
+      "description": "Allgemeine Hilfetexte",
+      "tags": [],
+      "alias": [
+        "*help"
+      ],
+      "content": {
+        "PowerShell_Mac": "F1 : Hilfe (zu Befehl oder Parameter)\nF2 : Gefolgt von 1...3 = Symbol für Pfad einfügen\n     Gefolgt von 0 = Symbol für Pfad löschen\nF3 : PredictionView umschalten\nF4 : Informationen anzeigen (u.a. Git)\nF6 : Befehlszeile löschen\nF7 : Zum Anfang der Befehlszeile\nF8 : Prompt umschalten\nF9 : Zum Ende der Befehlszeile\nF10: Undo\n"
+      }
+    },
+    {
+      "name": "TEXTE_SYMBOLE",
+      "type": "json",
+      "description": "Texte und Symbole",
+      "tags": [],
+      "alias": [
+        "*text",
+        "*symbole"
+      ],
+      "content": {
+        "Kombos": {
+          "GRID_SINGLE_┌┬┐": "┌ ┬ ┐ ⏐ ─ ├ ┼ ┤ └ ┴ ┘",
+          "GRID_DOUBLE_": "",
+          "Finger_👆👇👈👉": "👆👇👈👉",
+          "CheckBox_⬜⬛☐☒☑✘✔": "⬜⬛☐☒☑✘✔",
+          "Pfeile_↑↗→↘↓↙←↖": "↑↗→↘↓↙←↖",
+          "Römisch_ⅠⅡⅢⅣ": "ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ "
+        },
+        "Symbole": {
+          "Finger_👉": "👉",
+          "Maus_🖱": "🖱",
+          "Tastatur_⌨": "⌨",
+          "Globus_🌐": "🌐",
+          "Key_Command_⌘": "⌘",
+          "Key_Option_⌥": "⌥",
+          "Key_Control_⌃": "⌃",
+          "Key_Enter_↲": "↲",
+          "Key_Shift_⇧": "⇧",
+          "Key_CapsLock_⇪": "⇪",
+          "Check_✓": "✓",
+          "CheckFett_✔": "✔",
+          "CheckBox_✅": "✅",
+          "CheckBox_2_☑": "☑",
+          "KreuzBox_2_☒": "☒",
+          "KreuzFett_✘": "✘",
+          "Kreuz_✗": "✗",
+          "Box_☐": "☐",
+          "Finger_hoch_👆": "👆",
+          "Finger_runter_👇": "👇",
+          "Finger_links_👈": "👈",
+          "Finger_rechts_👉": "👉",
+          "Pfeil_hoch_↑": "↑",
+          "Pfeil_rechts_→": "→",
+          "Pfeil_runter_↓": "↓",
+          "Pfeil_links_←": "←",
+          "Warnung_⚠️": "⚠️"
+        }
+      }
+    },
+    {
+      "name": "JavaScript",
+      "type": "json",
+      "description": "JavaScript Beispiele",
+      "tags": [],
+      "alias": [
+        "*JavaScript",
+        "js"
+      ],
+      "content": {
+        "Switch": "switch(expression) {\n  case x:\n    // code block\n    break;\n  case y:\n    // code block\n    break;\n  default:\n    // code block\n}\n"
+      }
+    },
+    {
+      "name": "Hilfe",
+      "type": "json",
+      "description": "Allgemeine Hilfetexte",
+      "tags": [],
+      "alias": [
+        "*help"
+      ],
+      "content": {
+        "PowerShell_Mac": "F1 : Hilfe (zu Befehl oder Parameter)\nF2 : Gefolgt von 1...3 = Symbol für Pfad einfügen\n     Gefolgt von 0 = Symbol für Pfad löschen\nF3 : PredictionView umschalten\nF4 : Informationen anzeigen (u.a. Git)\nF6 : Befehlszeile löschen\nF7 : Zum Anfang der Befehlszeile\nF8 : Prompt umschalten\nF9 : Zum Ende der Befehlszeile\nF10: Undo\n"
+      }
     },
     {
       "name": "TEXTE_SYMBOLE",
