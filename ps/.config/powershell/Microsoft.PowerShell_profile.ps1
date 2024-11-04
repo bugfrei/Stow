@@ -331,7 +331,7 @@ function musik {
     if ($i -eq "3") { hoist; }
 }
 function silence {
-    ii "/Users/carstenschlegel/Music/Disturbed  - The Sound Of Silence (Official Music Video) [4K UPGRADE].mp4"
+    ii "/Users/carstenschlegel/Music/Sound of Silence.mp4"
     Start-Sleep -Seconds 5
     mvim -f /Users/carstenschlegel/soundofsilence
     Get-Process -Name VLC | Stop-Process
