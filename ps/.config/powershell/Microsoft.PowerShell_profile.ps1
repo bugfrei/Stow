@@ -113,6 +113,8 @@ if ((Get-PSReadLineOption).EditMode -eq "Vi")
     Set-PSReadLineKeyHandler -Key ' ,a' -ViMode Command -Function SelectAll
     Set-PSReadLineKeyHandler -Key ' ,h' -ViMode Command -Function ShowKeyBindings
     Set-PSReadLineKeyHandler -Key ' ,k' -ViMode Command -Function WhatIsKey
+
+    Set-PSReadLineKeyHandler -Chord 'v' -ScriptBlock { [Microsoft.PowerShell.PSConsoleReadLine]::ViInsertMode(); [Microsoft.PowerShell.PSConsoleReadLine]::Insert("v"); } -ViMode Command
 }
 Set-PSReadLineKeyHandler -Key 'F5' -ScriptBlock { [Microsoft.PowerShell.PSConsoleReadLine]::UndoAll(); [Microsoft.PowerShell.PSConsoleReadLine]::Insert(". /Users/carstenschlegel/.local/share/powershell/Modules/sup/sup.ps1 -nocls;"); [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine(); copy /Users/carstenschlegel/.local/share/powershell/Modules/sup/sup.ps1 /Users/carstenschlegel/Downloads -Force } -BriefDescription "Lädt das SUP Script neu"
 
