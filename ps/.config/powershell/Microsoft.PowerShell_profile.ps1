@@ -321,6 +321,21 @@ function vimrem
 
 Set-Location $startpath
 
+function musik {
+    Write-Host "1. Sound of Silence (silence)"
+    Write-Host "2. Valhalla Calling Me (val)"
+    Write-Host "3. Hoist the Colours high (hoist)"
+    $i = Read-Host
+    if ($i -eq "1") { silence; }
+    if ($i -eq "2") { val; }
+    if ($i -eq "3") { hoist; }
+}
+function silence {
+    ii "/Users/carstenschlegel/Music/Disturbed  - The Sound Of Silence (Official Music Video) [4K UPGRADE].mp4"
+    Start-Sleep -Seconds 5
+    mvim -f /Users/carstenschlegel/soundofsilence
+    Get-Process -Name VLC | Stop-Process
+}
 function val {
     ii "/Users/carstenschlegel/Music/VALHALLA CALLING by Miracle Of Sound ft. Peyton Parrish (Assassin's Creed) (DUET VERSION).mp4"
     Start-Sleep -Seconds 5
