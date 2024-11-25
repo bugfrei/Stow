@@ -80,6 +80,7 @@
 	trustExitCode = true
 	cmd = /opt/homebrew/bin/diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [pull]
+    rebase=false
 
 [interactive]
   diffFilter = delta --color-only
