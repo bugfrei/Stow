@@ -9,12 +9,34 @@ if ([DateTime]::Now.DayOfWeek -eq [System.DayOfWeek]::Monday) {
 
 # Kleines Script für die Pipe das JSON in ein Objekt (Default in Variable x) speichert
 # z.B. cloc --json | x
+# und dann nochmal als Funktions- und Variablenname : o
 function x{
     param(
     # Parameter json als Pipe eingabe
     [Parameter(ValueFromPipeline=$true)]
     [string]$json,
     [string]$varName = "x"
+)
+# In Begin Erst alle Zeilen lesen und in ein String umwandeln
+
+begin{
+    $j = ""
+}
+# In Process den String in ein Objekt umwandeln
+process{
+    $j += $json
+}
+end{
+    $o = (ConvertFrom-Json -InputObject $j)
+    Set-Variable -Name $varName -Scope Global -Value $o
+}
+}
+function o{
+    param(
+    # Parameter json als Pipe eingabe
+    [Parameter(ValueFromPipeline=$true)]
+    [string]$json,
+    [string]$varName = "o"
 )
 # In Begin Erst alle Zeilen lesen und in ein String umwandeln
 
