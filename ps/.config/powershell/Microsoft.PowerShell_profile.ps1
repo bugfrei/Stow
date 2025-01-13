@@ -19,7 +19,6 @@ function x{
 # In Begin Erst alle Zeilen lesen und in ein String umwandeln
 
 begin{
-    $global:x = ""
     $j = ""
 }
 # In Process den String in ein Objekt umwandeln
@@ -31,6 +30,44 @@ end{
     Set-Variable -Name $varName -Scope Global -Value $o
 }
 }
+
+# Kleines Script das die Ausgabe immer in JSON umwandelt. Default in Variable j
+function j{
+    param(
+    # Parameter json als Pipe eingabe
+    [Parameter(ValueFromPipeline=$true)]
+    [object]$val,
+    [string]$varName = "j",
+    [int]$depth = 3
+)
+# In Begin Erst alle Zeilen lesen und in ein String umwandeln
+
+begin{
+    $o = @()
+    $j = ""
+}
+# In Process den String in ein Objekt umwandeln
+process{
+    if ($json -is [string]){
+        $j += $val
+    }
+    else {
+        $o += $val
+    }
+}
+end{
+    if ($j -ne ""){
+        Set-Variable -Name $varName -Scope Global -Value $j
+    }
+    else {
+        $j = (ConvertTo-Json -InputObject $o -Depth $depth)
+        Set-Variable -Name $varName -Scope Global -Value $j
+    }
+}
+}
+
+
+
 # Neue Version
 #if
 #(!(Test-Path Env:TMUX)) {
