@@ -168,6 +168,9 @@ $global:__VSCodeOriginalPrompt = "x"
 $temp = "/Users/$username/temp"
 $dl = "/Users/$username/downloads"
 $dok = "/Users/$username/documents"
+
+# Env
+$env:RIPGREP_CONFIG_PATH="/Users/carstenschlegel/.ripgreprc"
 # Aliase für folgende Cmdlets laden
 $WarningPreference = "SilentlyContinue"
 Import-Module -Name Path | Out-Null
