@@ -7,6 +7,21 @@ if ([DateTime]::Now.DayOfWeek -eq [System.DayOfWeek]::Monday) {
     cd ~
 }
 
+function stopgui {
+    param(
+    [Switch] $NoRestart
+    )
+
+    get-process *sapgui* | Stop-Process
+    if (!($NoRestart)) {
+        Start-Sleep -Seconds 1
+        ii '/Applications/SAP Clients/SAPGUI 7.80rev2/SAPGUI 7.80rev2.app/'
+    }
+}
+
+function stopall {
+    get-process *steam* | Stop-Process
+}
 # Kleines Script für die Pipe das JSON in ein Objekt (Default in Variable x) speichert
 # z.B. cloc --json | x
 # und dann nochmal als Funktions- und Variablenname : o
@@ -467,6 +482,7 @@ Update-FormatData -PrependPath /Users/carstenschlegel/.config/powershell/format.
 Update-TypeData /Users/carstenschlegel/.config/powershell/types.ps1xml
 
 Write-Host "Tools für Auflistung der PS-Tools"
+Write-Host "Prozesse: stopgui [-NoRestart] | stopall" -ForegroundColor Red
 
 $ENv:EDITOR="vim"
 
