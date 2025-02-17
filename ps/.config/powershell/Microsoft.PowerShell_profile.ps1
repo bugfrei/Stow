@@ -8,6 +8,8 @@ if ([DateTime]::Now.DayOfWeek -eq [System.DayOfWeek]::Monday) {
 }
 
 function stopgui {
+    [CmdletBinding()]
+    [Alias("killgui")]
     param(
     [Switch] $NoRestart
     )
