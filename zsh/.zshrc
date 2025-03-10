@@ -145,3 +145,4 @@ alias mupdf="mupdf-gl"
 
 
 test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
+  [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
