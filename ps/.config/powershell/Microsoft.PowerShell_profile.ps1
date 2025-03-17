@@ -24,7 +24,6 @@ function stopgui {
 function stopall {
     get-process *steam* | Stop-Process
     Get-Process *momentum* | Stop-Process
-    Get-Process *controlcenter* | Stop-Process
     Get-Process *discord* | Stop-Process
 }
 # Kleines Script für die Pipe das JSON in ein Objekt (Default in Variable x) speichert
@@ -662,4 +661,6 @@ function DiffClip {
 function gitdiff {
     git diff ( [Regex]::Match( (git l | fzf), ".*([a-f0-9]{7,9})").Groups[1].Value )
 }
+
+$env:FZF_DEFAULT_OPTS="--no-sort --layout=reverse-list"
 
