@@ -23,6 +23,8 @@ function stopgui {
 
 function stopall {
     get-process *steam* | Stop-Process
+    Get-Process *momentum* | Stop-Process
+    Get-Process *controlcenter* | Stop-Process
 }
 # Kleines Script für die Pipe das JSON in ein Objekt (Default in Variable x) speichert
 # z.B. cloc --json | x
