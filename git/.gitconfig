@@ -17,7 +17,8 @@
     cm = commit --amend -m
     out = !git checkout $(git branch | fzf)
     test = !ii .
-    s = status
+    st = status
+    s = status -s
     sl = !gh sl
     jose = !gh jose
     ich = !gh Carsten
@@ -50,6 +51,8 @@
     cfg = config --global --edit
     cfgl = config --edit
     ghcfg = !vim ~/.config/gh/config.yml
+	pr = pull --rebase
+    notp = log --oneline --branches --not --remotes
 
 [init]
     defaultBranch = main
