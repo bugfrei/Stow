@@ -209,6 +209,9 @@ $WarningPreference = "Continue"
 # Cloud Foundry Tools
 . /Users/carstenschlegel/Coding/PW/SAPTools/saptools.ps1
 
+# Logtools (cf dmol logs)
+. /Users/carstenschlegel/Coding/PW/Logtools/tools.ps1
+
 # UTF8 als Standard Encoding für Get-Content (type) und Out-File
 $PSDefaultParameterValues = @{'Get-Content:Encoding' = 'utf8'; 'Out-File:Encoding' = 'utf8' }
 # JSON Tiefer von 2 (Default) aus 10 ändern
