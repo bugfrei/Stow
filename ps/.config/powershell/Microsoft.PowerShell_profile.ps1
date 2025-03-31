@@ -667,3 +667,16 @@ function gitdiff {
 
 $env:FZF_DEFAULT_OPTS="--no-sort --layout=reverse-list"
 
+# TMUX Kürzel
+function tn {
+    $session = ([regex]::Match(  (Get-Location).Path, '.*/(.*)').Groups[1].Value)
+    tmux new -s $session -d
+    tmux switch -t $session
+}
+
+function tk {
+    $session = ([regex]::Match(  (Get-Location).Path, '.*/(.*)').Groups[1].Value)
+    tmux switch -n
+    tmux kill-session -t $session
+}
+
