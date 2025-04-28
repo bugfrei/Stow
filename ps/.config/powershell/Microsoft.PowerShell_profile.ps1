@@ -347,7 +347,7 @@ function VoiceArgumentCompleter
         }
     }
 }
-    
+Read-Host "50%"    
 function Load-TextVoice
 {
     [CmdletBinding()]
