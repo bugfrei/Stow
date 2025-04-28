@@ -680,3 +680,13 @@ function tk {
     tmux kill-session -t $session
 }
 
+function keep-alive {
+    [CmdletBinding()]
+    [Alias("keep","keepalive")]
+    param(
+    )
+    crontab /Users/carstenschlegel/Coding/mouse.cron
+    Write-Host "Auflisten ob aktiv: crontab -l"
+    Write-Host "Bearbeiten        : crontab -e"
+}
+
