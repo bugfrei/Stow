@@ -437,11 +437,20 @@ function musik {
     Write-Host "1. Sound of Silence (silence)"
     Write-Host "2. Valhalla Calling Me (val)"
     Write-Host "3. Hoist the Colours high (hoist)"
+    Write-Host "4. Somewhere over the rainbow (rainbow)"
     $i = Read-Host
     if ($i -eq "1") { silence; }
     if ($i -eq "2") { val; }
     if ($i -eq "3") { hoist; }
+    if ($i -eq "4") { rainbow; }  
 }
+function rainbow {
+    ii "/Users/carstenschlegel/Music/rainbow.mp4"
+    Start-Sleep -Seconds 5
+    mvim -f /Users/carstenschlegel/rainbow
+    Get-Process -Name VLC | Stop-Process
+}
+
 function silence {
     ii "/Users/carstenschlegel/Music/Sound of Silence.mp4"
     Start-Sleep -Seconds 5
@@ -685,8 +694,13 @@ function keep-alive {
     [Alias("keep","keepalive")]
     param(
     )
-    crontab /Users/carstenschlegel/Coding/mouse.cron
-    Write-Host "Auflisten ob aktiv: crontab -l"
-    Write-Host "Bearbeiten        : crontab -e"
+    Write-Host "Keep Alive..."
+    while($true) 
+    {
+        cliclick m:+5,+0
+        start-sleep -Seconds 1
+        cliclick m:-10,+0
+        start-sleep -Seconds 60
+    }
 }
 
