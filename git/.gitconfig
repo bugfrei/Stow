@@ -9,6 +9,10 @@
     path = /Users/carstenschlegel/temp/include/.gitconfig
 [url "https://github.com/bugfrei/"]
     insteadOf = "bf:"
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
 [alias]
     h = !cat /Users/carstenschlegel/githelp.txt
     a = add --all
