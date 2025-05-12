@@ -80,6 +80,7 @@
 [push]
     default = current
     autoSetupRemote = true
+    followTags = true
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
@@ -106,4 +107,9 @@
   navigate = true   # n / N zum wechseln der Sektionen
   #dark = true
   #light = true
+  plus-style = syntax "#009900"
+  minus-style = syntax "#990000"
+  line-numbers = true
 
+[commit]
+	template = /Users/carstenschlegel/.gitmessage.txt

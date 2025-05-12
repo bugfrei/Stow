@@ -644,6 +644,18 @@
         "description": "Node NPM Pakete\n",
         "path": "/Users/carstenschlegel/Coding/npm",
         "name": "NPM"
+      },
+      {
+        "aliases": [
+          "stow",
+          "dotfiles",
+          "dotfile",
+          "dot"
+        ],
+        "groups": null,
+        "description": "Konfigurationsdateien\n",
+        "path": "/Users/carstenschlegel/stowdir",
+        "name": "STOWDIR"
       }
     ],
     "groups": [
@@ -1138,6 +1150,80 @@
         "PowerShell": "F5  : SUP neu laden/Sync. -> Parallels Desktop\n\n"
       },
       "type": "json"
+    },
+    {
+      "name": "TEXTE_SYMBOLE",
+      "type": "json",
+      "description": "Texte und Symbole",
+      "tags": [],
+      "alias": [
+        "*text",
+        "*symbole"
+      ],
+      "content": {
+        "Kombos": {
+          "GRID_SINGLE_┌┬┐": "┌ ┬ ┐ ⏐ ─ ├ ┼ ┤ └ ┴ ┘",
+          "GRID_DOUBLE_": "",
+          "Finger_👆👇👈👉": "👆👇👈👉",
+          "CheckBox_⬜⬛☐☒☑✘✔": "⬜⬛☐☒☑✘✔",
+          "Pfeile_↑↗→↘↓↙←↖": "↑↗→↘↓↙←↖",
+          "Römisch_ⅠⅡⅢⅣ": "ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ "
+        },
+        "Symbole": {
+          "Finger_👉": "👉",
+          "Maus_🖱": "🖱",
+          "Tastatur_⌨": "⌨",
+          "Globus_🌐": "🌐",
+          "Key_Command_⌘": "⌘",
+          "Key_Option_⌥": "⌥",
+          "Key_Control_⌃": "⌃",
+          "Key_Enter_↲": "↲",
+          "Key_Shift_⇧": "⇧",
+          "Key_CapsLock_⇪": "⇪",
+          "Check_✓": "✓",
+          "CheckFett_✔": "✔",
+          "CheckBox_✅": "✅",
+          "CheckBox_2_☑": "☑",
+          "KreuzBox_2_☒": "☒",
+          "KreuzFett_✘": "✘",
+          "Kreuz_✗": "✗",
+          "Box_☐": "☐",
+          "Finger_hoch_👆": "👆",
+          "Finger_runter_👇": "👇",
+          "Finger_links_👈": "👈",
+          "Finger_rechts_👉": "👉",
+          "Pfeil_hoch_↑": "↑",
+          "Pfeil_rechts_→": "→",
+          "Pfeil_runter_↓": "↓",
+          "Pfeil_links_←": "←",
+          "Warnung_⚠️": "⚠️"
+        }
+      }
+    },
+    {
+      "name": "JavaScript",
+      "type": "json",
+      "description": "JavaScript Beispiele",
+      "tags": [],
+      "alias": [
+        "*JavaScript",
+        "js"
+      ],
+      "content": {
+        "Switch": "switch(expression) {\n  case x:\n    // code block\n    break;\n  case y:\n    // code block\n    break;\n  default:\n    // code block\n}\n"
+      }
+    },
+    {
+      "name": "Hilfe",
+      "type": "json",
+      "description": "Allgemeine Hilfetexte",
+      "tags": [],
+      "alias": [
+        "*help"
+      ],
+      "content": {
+        "PowerShell_Mac": "F1 : Hilfe (zu Befehl oder Parameter)\nF2 : Gefolgt von 1...3 = Symbol für Pfad einfügen\n     Gefolgt von 0 = Symbol für Pfad löschen\nF3 : PredictionView umschalten\nF4 : Informationen anzeigen (u.a. Git)\nF6 : Befehlszeile löschen\nF7 : Zum Anfang der Befehlszeile\nF8 : Prompt umschalten\nF9 : Zum Ende der Befehlszeile\nF10: Undo\n"
+      }
     },
     {
       "name": "TEXTE_SYMBOLE",
