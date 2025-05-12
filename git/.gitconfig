@@ -1,6 +1,7 @@
 [user]
     name = Carsten Schlegel
     email = 71234951+bugfrei@users.noreply.github.com
+
 [core]
     editor = nvim
     excludesfile = /Users/carstenschlegel/.gitignore_global
@@ -81,6 +82,9 @@
     default = current
     autoSetupRemote = true
     followTags = true
+[pull]
+    default = current
+    rebase=false
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
@@ -97,8 +101,6 @@
 [mergetool "diffmerge"]
 	trustExitCode = true
 	cmd = /opt/homebrew/bin/diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-[pull]
-    rebase=false
 
 [interactive]
   diffFilter = delta --color-only
