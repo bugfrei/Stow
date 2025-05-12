@@ -22,9 +22,11 @@ function stopgui {
 }
 
 function stopall {
-    get-process *steam* | Stop-Process
+    get-process "Steam Helper" | Stop-Process
+    get-process "steam_osx" | Stop-Process
     Get-Process *momentum* | Stop-Process
     Get-Process *discord* | Stop-Process
+    Get-Process *vlc* | Stop-Process
 }
 # Kleines Script für die Pipe das JSON in ein Objekt (Default in Variable x) speichert
 # z.B. cloc --json | x
