@@ -7,6 +7,8 @@
     pager = delta
 [includeIf "gitdir:/Users/carstenschlegel/temp/include/"]
     path = /Users/carstenschlegel/temp/include/.gitconfig
+[url "https://github.com/bugfrei/"]
+    insteadOf = "bf:"
 [alias]
     h = !cat /Users/carstenschlegel/githelp.txt
     a = add --all
