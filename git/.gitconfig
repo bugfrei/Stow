@@ -91,7 +91,7 @@
     process = git-lfs filter-process
     required = true
 [diff]
-	tool = diffmerge
+    tool = nvimdiff
     colorMoved = default
 [difftool "diffmerge"]
 	cmd = /opt/homebrew/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
