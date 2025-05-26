@@ -678,15 +678,62 @@ function gitdiff {
 
 $env:FZF_DEFAULT_OPTS="--no-sort --layout=reverse-list"
 
+function TmuxSessions_ArgumentCompleter {
+    param(
+        $commandName,
+        $parameterName,
+        $wordToComplete,
+        $commandAst,
+        $fakeBoundParameters
+    )
+ 
+    $posibleItems = @()
+    
+    $files = (Get-ChildItem "~/.tmux/*.ps1")
+    foreach($file in $files) {
+        if ($file -match "LAYOUT") {
+            $name = $file.BaseName
+            $item = [PSCustomObject]@{
+                shortName = $name
+                longName = $name
+                toolTip = "Script: $($file.FullName)"
+            }
+            $posibleItems += $item
+        }
+    }
+
+    # Auswertung
+    foreach($item in $posibleItems) {
+        if ($item.shortName -match "$($wordToComplete).*") {
+            New-Object System.Management.Automation.CompletionResult (
+                $item.shortName,
+                $item.longName,
+                "ParameterValue",
+                $item.toolTip
+            )
+        }
+    }
+}
 # TMUX Kürzel
 function tn {
+    [CmdletBinding()]
+    param(
+        [ArgumentCompleter({TmuxSessions_ArgumentCompleter @args})]
+        [string] $Layout = ""
+    )
     $session = ([regex]::Match(  (Get-Location).Path, '.*/(.*)').Groups[1].Value)
+    $session = $session.Replace(".", "_")
     tmux new -s $session -d
     tmux switch -t $session
+    if ($Layout -ne "") {
+        Start-Sleep -Seconds 2
+        tmux send-keys -t $session "~/.tmux/$Layout.ps1" C-m
+    }
 }
 
 function tk {
     $session = ([regex]::Match(  (Get-Location).Path, '.*/(.*)').Groups[1].Value)
+    $session = $session.Replace(".", "_")
     tmux switch -n
     tmux kill-session -t $session
 }
@@ -706,3 +753,192 @@ function keep-alive {
     }
 }
 
+function Title {
+    param (
+        [ValidateSet(
+            'Black','DarkBlue','DarkGreen','DarkCyan','DarkRed','DarkMagenta','DarkYellow','Gray',
+            'DarkGray','Blue','Green','Cyan','Red','Magenta','Yellow','White'
+        )]
+        [string]$Hintergrund,
+
+        [ValidateSet(
+            'Black','DarkBlue','DarkGreen','DarkCyan','DarkRed','DarkMagenta','DarkYellow','Gray',
+            'DarkGray','Blue','Green','Cyan','Red','Magenta','Yellow','White'
+        )]
+        [string]$Vordergrund,
+        [string]$Text,
+        [Switch]$Fill
+    )
+    if ($Text -eq "") {
+        $t = Read-Host "Titeltext"
+    } else {
+        $t = $Text
+    }
+    if ($Hintergrund -eq "") {
+        $b = SelColor Hintergrundfarbe
+    } else {
+        $b = $Hintergrund
+    }
+    if ($Vordergrund -eq "") {
+        $f = SelColor Vordergrundfarbe $b
+    } else {
+        $f = $Vordergrund
+    }
+    $w = [System.Console]::WindowWidth
+
+    $sp = $w - ($t.Length) - 1
+    if ($Fill) {
+        $spaces = (" ") * $sp
+    }
+    Clear-Host
+    Write-Host "$t$spaces" -ForegroundColor $f -BackgroundColor $b -NoNewline;Read-Host
+}
+
+function SelColor {
+    param(
+        $Text,
+        $BackColor = ""
+    )
+    $colors = [enum]::GetValues([System.ConsoleColor])
+    for ($i = 0; $i -lt $colors.Count; $i++) {
+        if ($BackColor -ne "") {
+            Write-Host "$i) $($colors[$i])" -ForegroundColor $colors[$i] -BackgroundColor $BackColor
+        } else {
+            Write-Host "$i) $($colors[$i])" -ForegroundColor $colors[$i]
+        }
+    }
+
+    [int] $index = Read-Host "$Text (0-$($colors.Count - 1))"
+    if ($index -ge 0 -and $index -lt $colors.Count) {
+        $selected = $colors[$index]
+    }
+    return $selected
+}
+function Files_ArgumentCompleter {
+    param(
+        $commandName,
+        $parameterName,
+        $wordToComplete,
+        $commandAst,
+        $fakeBoundParameters
+    )
+ 
+    $posibleItems = ((dir).name)
+
+    # Auswertung
+    foreach($item in $posibleItems) {
+        if ($item -is [PSCustomObject]) {
+            if ($item.shortName -match "$($wordToComplete).*") {
+                New-Object System.Management.Automation.CompletionResult (
+                    $item.shortName,
+                    $item.longName,
+                    "ParameterValue",
+                    $item.toolTip
+                )
+            }
+        }
+        else {
+            if ($item -match "$($wordToComplete).*") {
+                New-Object System.Management.Automation.CompletionResult (
+                    $item,
+                    $item,
+                    "ParameterValue",
+                    $item
+                )
+            }
+        }
+    }
+}
+    
+function Cmd_ArgumentCompleter {
+    param(
+        $commandName,
+        $parameterName,
+        $wordToComplete,
+        $commandAst,
+        $fakeBoundParameters
+    )
+ 
+    $posibleItems = @()
+    $file = $fakeBoundParameters["File"]
+    $found = $false
+    if ($file.ToUpper().EndsWith(".JS")) {
+        $posibleItems += "node"
+        $found = $true
+    }
+    if ($file.ToUpper().EndsWith(".PY")) {
+        $posibleItems += "python3"
+        $found = $true
+    }
+    if ($file.ToUpper().EndsWith(".PS1")) {
+        $posibleItems += "pwsh"
+        $found = $true
+    }
+    if ($file.ToUpper().EndsWith(".SH")) {
+        $posibleItems += "bash"
+        $found = $true
+    }
+    if (!$found) {
+        $posibleItems += "node"
+        $posibleItems += "python3"
+        $posibleItems += "pwsh"
+        $posibleItems += "bash"
+    }
+
+    # Auswertung
+    foreach($item in $posibleItems) {
+        if ($item -is [PSCustomObject]) {
+            if ($item.shortName -match "$($wordToComplete).*") {
+                New-Object System.Management.Automation.CompletionResult (
+                    $item.shortName,
+                    $item.longName,
+                    "ParameterValue",
+                    $item.toolTip
+                )
+            }
+        }
+        else {
+            if ($item -match "$($wordToComplete).*") {
+                New-Object System.Management.Automation.CompletionResult (
+                    $item,
+                    $item,
+                    "ParameterValue",
+                    $item
+                )
+            }
+        }
+    }
+}
+function watch {
+    [CmdletBinding()]
+    [Alias("wa")]
+    param(
+        [ArgumentCompleter({Files_ArgumentCompleter @args})]
+        $file,
+        [ArgumentCompleter({Cmd_ArgumentCompleter @args})]
+        $cmd = ""
+    )
+    if (!(Test-Path $file)) {
+        $file = (dir "$file*" | Where-Object { $_.BaseName -eq $file }).Name
+    }
+    if ($cmd -eq "") {
+        if ($file.ToUpper().EndsWith(".JS")) {
+            $cmd += "node"
+            $found = $true
+        }
+        if ($file.ToUpper().EndsWith(".PY")) {
+            $cmd += "python3"
+            $found = $true
+        }
+        if ($file.ToUpper().EndsWith(".PS1")) {
+            $cmd += "pwsh"
+            $found = $true
+        }
+        if ($file.ToUpper().EndsWith(".SH")) {
+            $cmd += "bash"
+            $found = $true
+        }
+    }
+
+    ls $file | entr -c $cmd /_
+}

@@ -7,6 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export EDITOR=vim
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -146,3 +147,6 @@ alias mupdf="mupdf-gl"
 
 test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
   [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+ 
+set -o vi
+
