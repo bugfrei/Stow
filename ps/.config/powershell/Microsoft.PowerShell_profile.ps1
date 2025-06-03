@@ -22,11 +22,12 @@ function stopgui {
 }
 
 function stopall {
-    get-process "Steam Helper" | Stop-Process
-    get-process "steam_osx" | Stop-Process
-    Get-Process *momentum* | Stop-Process
-    Get-Process *discord* | Stop-Process
-    Get-Process *vlc* | Stop-Process
+    get-process "Steam Helper" -ErrorAction SilentlyContinue | Stop-Process *>$null
+    get-process "steam_osx" -ErrorAction SilentlyContinue | Stop-Process *>$null
+    Get-Process *momentum* -ErrorAction SilentlyContinue | Stop-Process *>$null
+    Get-Process *discord* -ErrorAction SilentlyContinue | Stop-Process *>$null
+    Get-Process *vlc* -ErrorAction SilentlyContinue | Stop-Process *>$null
+    Write-Host "Alle nicht benötigten Prozesse wurden beendet" -ForegroundColor Green
 }
 # Kleines Script für die Pipe das JSON in ein Objekt (Default in Variable x) speichert
 # z.B. cloc --json | x
@@ -176,6 +177,7 @@ New-Alias -Name typem -Value "Show-Markdown"
 New-Alias -Name .. -Value ForEach-Object
 New-Alias mupdf mupdf-gl
 New-Alias -Name todo -Value taskell
+New-Alias -Name arc -Value arc-cli
 
 # Variablen
 $username = [System.Environment]::Username
@@ -678,7 +680,7 @@ function gitdiff {
 
 $env:FZF_DEFAULT_OPTS="--no-sort --layout=reverse-list"
 
-function TmuxSessions_ArgumentCompleter {
+function TmuxSessions2_ArgumentCompleter {
     param(
         $commandName,
         $parameterName,
@@ -718,7 +720,7 @@ function TmuxSessions_ArgumentCompleter {
 function tn {
     [CmdletBinding()]
     param(
-        [ArgumentCompleter({TmuxSessions_ArgumentCompleter @args})]
+        [ArgumentCompleter({TmuxSessions2_ArgumentCompleter @args})]
         [string] $Layout = ""
     )
     $session = ([regex]::Match(  (Get-Location).Path, '.*/(.*)').Groups[1].Value)
@@ -938,7 +940,202 @@ function watch {
             $cmd += "bash"
             $found = $true
         }
+        if ($file.ToUpper().EndsWith(".JSON")) {
+            $cmd += "bat"
+            $found = $true
+        }
+        if ($file.ToUpper().EndsWith(".XML")) {
+            $cmd += "bat"
+            $found = $true
+        }
+    }
+    if ($cmd -eq "") {
+        $cmd = "bat"
     }
 
     ls $file | entr -c $cmd /_
+}
+
+# ARC CLI Tabauswahl
+function arcrc {
+    [CmdletBinding()]
+    [Alias("arccfg", "ca")]
+    param(
+        [String] $cmd,
+        [Switch] $LoadTabs,
+        [Switch] $Reset,
+        [Switch] $Edit,
+        [Switch] $Help
+
+    )
+    if ($cmd.ToUpper().StartsWith("L")) {
+        $LoadTabs = $true
+    }
+    if ($cmd.ToUpper().StartsWith("R")) {
+        $LoadTabs = $true
+        $Reset = $true
+    }
+    if ($cmd.ToUpper().StartsWith("E")) {
+        $Edit = $true
+    }
+    if ($cmd.ToUpper().StartsWith("H")) {
+        $Help = $true
+    }
+    if ($Help) {
+        Write-Host "Config Arc: ca [L]oadTabs | [R]eset | [E]dit"
+        Write-Host "LoadTabs: Lädt die Tabs von ARC in ~/tabs"
+        Write-Host "Reset   : Setzt alle ARC Tabs zurück und löscht die Einträge in ~/.config/skhd/skhdrc"
+        Write-Host "Edit    : Löscht Einträge aus ~/old-tabs.json und ~/.config/skhd/skhdrc"
+        return
+    }
+
+    if ($LoadTabs) {
+         arc list-tabs > ~/tabs
+    }
+    
+    $oldJson = (Get-Content ~/old-tabs.json -ErrorAction SilentlyContinue -Raw) | ConvertFrom-Json -ErrorAction SilentlyContinue
+    if ($Edit) {
+        $lst = @()
+        foreach($ol in $oldJson) {
+            $lst += "$($ol.id) - Taste $($ol.nr) : $($ol.name) - $($ol.url)"
+        }
+        Write-Host "Einträge zum löschen wählen" -ForegroundColor Yellow
+        $del = ($lst | gum choose --no-limit)
+        $ids = @()
+        if ($del -ne $null) {
+            foreach($d in $del) {
+                $nr = [int]$d.Split(" - ")[0].Trim()
+                $ids += $nr
+            }
+        }
+        $nrs = @()
+        foreach($ol in $oldJson) {
+            if ($ol.id -in $ids) {
+                $nrs += $ol.nr
+            }
+        }
+        $newJson = @()
+        foreach($ol in $oldJson) {
+            if ($ol.id -notin $ids) {
+                $newJson += $ol
+            }
+        }
+        $j = ConvertTo-Json -InputObject $newJson -Depth 3
+        Set-Content ~/old-tabs.json $j
+        
+        $rc = Get-Content ~/.config/skhd/skhdrc
+        $newLines = @()
+        foreach($l in $rc) {
+            $nr = $l.Split(" : ")[0].Split("-")[1].Trim()
+            if ($nr -notin $nrs) {
+                $newLines += $l
+            }
+        }
+        Set-Content ~/.config/skhd/skhdrc $newLines
+
+
+        return
+    }
+    if ($Reset) {
+        $tabs = Get-Content ~/tabs
+       foreach($ol in $oldJson) {
+            foreach($t in $tabs) {
+                $a = $t.Split(",")
+                if ($a -ne $null -and $a.Count -gt 3) {
+                    $windowId = $a[0].Trim()
+                    $tabId = $a[1].Trim()
+                    $name = $a[2].Trim()
+                    $url = $a[3].Trim()
+                    $typ = $a[4].Trim()
+                    $nr = $ol.nr
+                    if ($ol.name -eq $name -and $ol.typ -eq $typ) {
+                        $lines = Get-Content ~/.config/skhd/skhdrc
+                        $newLines = @()
+                        foreach($l in $lines) {
+                            if (!($l.StartsWith("cmd - $nr"))) {
+                                $newLines += $l
+                            }
+                        }
+                        $newLines += "cmd - $nr : arc-cli select-tab $windowId $tabId"
+                        Set-Content ~/.config/skhd/skhdrc $newLines
+                    }
+                }
+            }
+        }
+        Write-Host "Alle ARC Tabs wurden zurückgesetzt" -ForegroundColor Green
+        return
+    }
+    
+    $oldList = @()
+    foreach($ol in $oldJson) {
+        $oldItem = [PSCustomObject]@{
+            name = $ol.name
+            url = $ol.url
+            typ = $ol.typ
+            nr = $ol.nr
+            id = 0
+        }
+        $oldList += $oldItem
+    }
+
+    while ($true) {
+        $auswahl = type ~/tabs | fzf --header="Wähle Tab aus" -e -i
+        if ($auswahl -eq $null) {
+            Write-Host "Abbruch" -ForegroundColor Red
+            return
+        }
+        $a = $auswahl.Split(",")
+        $windowId = $a[0].Trim()
+        $tabId = $a[1].Trim()
+        $name = $a[2].Trim()
+        $url = $a[3].Trim()
+        $typ = $a[4].Trim()
+        
+        arc select-tab $windowId $tabId
+        Write-Host "Tab wurde ausgewählt" -ForegroundColor Red
+        $nr = Read-Host "Nummer für Tastenkombination (Cmb + Nr), keine Eingabe = Abbruch, * = neu"
+        if ($nr -ne "") {
+            if ($nr -eq "*") {
+                continue
+            }
+            $lines = Get-Content ~/.config/skhd/skhdrc
+            $newLines = @()
+            foreach($l in $lines) {
+                if (!($l.StartsWith("cmd - $nr"))) {
+                    $newLines += $l
+                }
+            }
+            $newLines += "cmd - $nr : arc-cli select-tab $windowId $tabId"
+            Set-Content ~/.config/skhd/skhdrc $newLines
+            Write-Host "Neue Tastenkombination cmd + $nr wurde hinzugefügt" -ForegroundColor Green
+            $fnd = $false
+
+            foreach($oI in $oldList) {
+                if ($oI.name -eq $name -and $oI.url -eq $url -and $oI.typ -eq $typ) {
+                    $fnd = $true
+                    break
+                }
+            }
+            if (!$fnd) {
+                $oldItem = [PSCustomObject]@{
+                    name = $name
+                    url = $url
+                    typ = $typ
+                    nr = $nr
+                    id = 0
+                }
+                $oldList += $oldItem
+
+                for ($i = 1; $i -le $oldList.Count; $i++) {
+                    $oldList[$i - 1].id = $i
+                }
+                $oldJson = (ConvertTo-Json -InputObject $oldList -Depth 3)
+                Set-Content ~/old-tabs.json $oldJson
+            }
+        }
+        else {
+            Write-Host "Abbruch" -ForegroundColor Red
+            return
+        }
+    }
 }
